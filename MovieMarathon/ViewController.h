@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Theater.h"
+@interface ViewController : UITableViewController
 
-@interface ViewController : UIViewController
-
-
+@property(strong,nonatomic) NSMutableArray *movies;
+@property(strong,nonatomic) NSMutableArray *theaters;
 @end
 
