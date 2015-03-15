@@ -10,6 +10,8 @@
 		3062CAB81AAD0AE500BE84BC /* MovieEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3062CAB71AAD0AE500BE84BC /* MovieEntry.m */; };
 		3062CABB1AAD160B00BE84BC /* MovieEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3062CABA1AAD160B00BE84BC /* MovieEntryTableViewCell.m */; };
 		3062CABE1AAD880C00BE84BC /* Theater.m in Sources */ = {isa = PBXBuildFile; fileRef = 3062CABD1AAD880C00BE84BC /* Theater.m */; };
+		308E58CC1AB52E9F00738CD0 /* SelectTheaterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 308E58CB1AB52E9F00738CD0 /* SelectTheaterViewController.m */; };
+		308E58CF1AB532F700738CD0 /* TheaterEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 308E58CE1AB532F700738CD0 /* TheaterEntryTableViewCell.m */; };
 		3095259D1AACF81300AC3B1D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3095259C1AACF81300AC3B1D /* main.m */; };
 		309525A01AACF81300AC3B1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3095259F1AACF81300AC3B1D /* AppDelegate.m */; };
 		309525A31AACF81300AC3B1D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 309525A21AACF81300AC3B1D /* ViewController.m */; };
@@ -37,6 +39,10 @@
 		3062CABA1AAD160B00BE84BC /* MovieEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieEntryTableViewCell.m; sourceTree = "<group>"; };
 		3062CABC1AAD880C00BE84BC /* Theater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theater.h; sourceTree = "<group>"; };
 		3062CABD1AAD880C00BE84BC /* Theater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theater.m; sourceTree = "<group>"; };
+		308E58CA1AB52E9F00738CD0 /* SelectTheaterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTheaterViewController.h; sourceTree = "<group>"; };
+		308E58CB1AB52E9F00738CD0 /* SelectTheaterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTheaterViewController.m; sourceTree = "<group>"; };
+		308E58CD1AB532F700738CD0 /* TheaterEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheaterEntryTableViewCell.h; sourceTree = "<group>"; };
+		308E58CE1AB532F700738CD0 /* TheaterEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheaterEntryTableViewCell.m; sourceTree = "<group>"; };
 		309525971AACF81300AC3B1D /* MovieMarathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieMarathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3095259B1AACF81300AC3B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3095259C1AACF81300AC3B1D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -105,6 +111,10 @@
 		309525991AACF81300AC3B1D /* MovieMarathon */ = {
 			isa = PBXGroup;
 			children = (
+				308E58CD1AB532F700738CD0 /* TheaterEntryTableViewCell.h */,
+				308E58CE1AB532F700738CD0 /* TheaterEntryTableViewCell.m */,
+				308E58CA1AB52E9F00738CD0 /* SelectTheaterViewController.h */,
+				308E58CB1AB52E9F00738CD0 /* SelectTheaterViewController.m */,
 				3062CABC1AAD880C00BE84BC /* Theater.h */,
 				3062CABD1AAD880C00BE84BC /* Theater.m */,
 				3062CAB91AAD160B00BE84BC /* MovieEntryTableViewCell.h */,
@@ -293,9 +303,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				308E58CF1AB532F700738CD0 /* TheaterEntryTableViewCell.m in Sources */,
 				309525A31AACF81300AC3B1D /* ViewController.m in Sources */,
 				309525A01AACF81300AC3B1D /* AppDelegate.m in Sources */,
 				3062CAB81AAD0AE500BE84BC /* MovieEntry.m in Sources */,
+				308E58CC1AB52E9F00738CD0 /* SelectTheaterViewController.m in Sources */,
 				3062CABE1AAD880C00BE84BC /* Theater.m in Sources */,
 				3062CABB1AAD160B00BE84BC /* MovieEntryTableViewCell.m in Sources */,
 				3095259D1AACF81300AC3B1D /* main.m in Sources */,

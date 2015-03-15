@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "AFNetworking.h"
 #import "MovieEntry.h"
+#import "SelectTheaterViewController.h"
 #import "MovieEntryTableViewCell.h"
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *nextButton;
@@ -48,7 +49,7 @@
 
 -(void) fetchAllMovies {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://moviehopper.herokuapp.com/API.php?zipcode=94087" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:@"http://moviehopper.herokuapp.com/API.php?zip=94087" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *dictionary = (NSDictionary *) responseObject;
         NSDictionary *moviesDict = (NSDictionary *) dictionary[@"movies"];
         for(id key in moviesDict){
@@ -66,9 +67,24 @@
         [self.tableView reloadData];
         NSDictionary *theatersDict = (NSDictionary *) dictionary[@"theaters"];
         for (id key in theatersDict){
+            NSDictionary *theaterDict = [theatersDict objectForKey:key];
             Theater *theater = [[Theater alloc] init];
-
-            //NSLog(@"%@", [theatersDict objectForKey:key]);
+            theater.name = theaterDict[@"name"];
+            
+            //Store all movie times
+            NSMutableDictionary *movieTimes = [[NSMutableDictionary alloc] init];
+            
+            NSArray *movies = (NSArray *) theaterDict[@"movies"];
+            for (id movie in movies){
+                NSMutableArray *timesInDict = [[NSMutableArray alloc] init];
+                NSArray *times = (NSArray *) movie[@"times"];
+                for (id time in times){
+                    [timesInDict addObject:time];
+                }
+                [movieTimes setObject:timesInDict forKey:movie[@"id"]];
+            }
+            theater.movieTimes = movieTimes;
+            [self.theaters addObject:theater];
             
         }
         
@@ -119,11 +135,10 @@
 
     MovieEntry *movie = [self.movies objectAtIndex:sender.tag];
     if([self.selectedMovies containsObject:movie]){
-        [sender setTitle:@"Movie Added!" forState:UIControlStateNormal];
         [sender setSelected:YES];
         
     } else{
-        [sender setTitle:@"Add Movie" forState:UIControlStateNormal];
+      
         [sender setSelected:NO];
     }
 }
@@ -132,12 +147,10 @@
     MovieEntry *movie = [self.movies objectAtIndex:sender.tag];
     if(![self.selectedMovies containsObject:movie]){
         [self.selectedMovies addObject:movie];
-        [sender setTitle:@"Movie Added!" forState:UIControlStateNormal];
         [sender setSelected:YES];
         
     } else{
         [self.selectedMovies removeObject:movie];
-        [sender setTitle:@"Add Movie" forState:UIControlStateNormal];
         [sender setSelected:NO];
     }
     if(self.selectedMovies.count > 0){
@@ -147,6 +160,21 @@
     }
     
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"SelectTheaters"])
+    {
+        // Get reference to the destination view controller
+         SelectTheaterViewController *vc = [segue destinationViewController];
+        
+        // Pass any objects to the view controller here, like...
+        [vc setMovies:self.selectedMovies];
+        [vc setTheaters:self.theaters];
+    }
+}
+
 
 - (IBAction)pressedNext:(id)sender {
 }

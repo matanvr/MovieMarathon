@@ -32,14 +32,28 @@
     }
     
     if (entry.imgURL) {
-        NSString *completeURL = [NSString stringWithFormat:@"%@%@", @"http:", entry.imgURL];
-        NSURL *imageURL = [[NSURL alloc] initWithString:completeURL];
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-        self.mainImageView.image = [UIImage imageWithData:imageData];
-        self.mainImageView.clipsToBounds = true;
+        [self loadImage:entry.imgURL];
         
     }
     
+}
+
+- (void) loadImage:(NSString *) url{
+    
+    
+    dispatch_queue_t q = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(q, ^{
+        /* Fetch the image from the server... */
+        NSURL *imageURL = [[NSURL alloc] initWithString:url];
+        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        UIImage *img = [UIImage imageWithData:imageData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            /* This is the main thread again, where we set the tableView's image to
+             be what we just fetched. */
+            self.mainImageView.image = img;
+            self.mainImageView.clipsToBounds = true;
+        });
+    });
 }
 
 @end
